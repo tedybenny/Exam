@@ -19,7 +19,7 @@ namespace Exam.Classes
                                 "server=localhost;" +
                                 "userid=root;" +
                                 "password=root;" +
-                                "database=sys;" +
+                                "database=mall;" +
                                 "port=3306;" +
                                 "persistsecurityinfo=True;" +
                                 "sslmode=None");

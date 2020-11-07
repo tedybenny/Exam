@@ -1,0 +1,26 @@
+﻿<Window x:Class="Exam.Windows.ManagerC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exam.Windows"
+        mc:Ignorable="d"
+        Title="ManagerC" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="malls" ItemsSource="{Binding mallList}">
+            <DataGrid.Columns >
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название ТЦ" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Status}" Header="Статус" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Count}" Header="Количество павильонов" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=City}" Header="Город" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Cost}" Header="Стоимость" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Value_ratio}" Header="Этажность" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Floors}" Header="Коэффциент" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

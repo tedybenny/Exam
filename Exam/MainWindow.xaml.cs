@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Exam.Classes;
 using MySql.Data.MySqlClient;
+using static Exam.Classes.Tables;
 
 namespace Exam
 {
@@ -30,12 +32,13 @@ namespace Exam
         {
             if(table.Auth(login.Text,password.Password) == true)
             {
-                MessageBox.Show("Красава,Стас");
+                this.Close();
             }
             else
             {
-                MessageBox.Show("666");
+                MessageBox.Show("Неправильный логин или пароль");
             }
         }
+
     }
 }
