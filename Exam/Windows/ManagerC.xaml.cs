@@ -29,7 +29,6 @@ namespace Exam.Windows
             InitializeComponent();
             DataContext = this;
             mallList = Tables.ReadMalls();
-
         }
 
     }
