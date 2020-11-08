@@ -80,14 +80,22 @@ namespace Exam.Windows
 
              if (name.Text != "" && status.Text != "" && count.Text != "" && city.Text != "" && cost.Text != "" && ratio.Text != "" && floors.Text != "")
             {
-                if (table.EditMall(name.Text, status.Text, Convert.ToInt32(count.Text),city.Text,Convert.ToDouble(cost.Text), Convert.ToDouble(ratio.Text),Convert.ToInt32(floors.Text), Convert.ToString(mall.Name)) == true)
+                if (Tables.PavilionsPlan(Convert.ToString(mall.Name)).Count > 0 && status.Text=="План")
                 {
-                    MessageBox.Show("Успешно");
+                    MessageBox.Show("Нельзя изменить статус, т.к есть забронированный стол");
                 }
                 else
                 {
-                    MessageBox.Show("ПАЛУНДРА!!!");
+                    if (table.EditMall(name.Text, status.Text, Convert.ToInt32(count.Text), city.Text, Convert.ToDouble(cost.Text), Convert.ToDouble(ratio.Text), Convert.ToInt32(floors.Text), Convert.ToString(mall.Name)) == true)
+                    {
+                        MessageBox.Show("Успешно");
+                    }
+                    else
+                    {
+                        MessageBox.Show("ПАЛУНДРА!!!");
+                    }
                 }
+
             }
             
         }

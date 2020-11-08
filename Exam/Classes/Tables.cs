@@ -120,6 +120,7 @@ namespace Exam.Classes
             MySqlCommand cmd = new MySqlCommand("UPDATE mall.malls SET name = @name," +
                 "status = @status,pavilions = @pavilions,city = @city,cost = @cost,added_value_ratio=@added_value_ratio,floors=@floors " + 
                 "WHERE name = @oldname",sqlConnection);
+            
             cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
             cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = status;
             cmd.Parameters.Add("@pavilions".ToString(), MySqlDbType.Int32).Value = pavilions;
@@ -135,6 +136,30 @@ namespace Exam.Classes
 
         }
 
+        public static List<pavilion> PavilionsPlan(string name)
+        {
+            List<pavilion> pavilionsList = new List<pavilion>();
+            if (!DBhandler.TryConnectToDb(out MySqlConnection sqlConnection))
+                return pavilionsList;
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM mall.pavilions WHERE mall_name = @name AND status = @status", sqlConnection);
+            cmd.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+            cmd.Parameters.Add("@status", MySqlDbType.VarChar).Value = "Забронирован";
+            sqlConnection.Open();
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int id = (int)reader[0];
+                string mall_name = (string)reader[1];
+                string number = (string)reader[2];
+                int floor = (int)reader[3];
+                string status = (string)reader[4];
+                double area = (double)reader[5];
+                double areacost = (double)reader[6];
+                double added_value_ratio = (double)reader[7];
+                pavilionsList.Add(new pavilion(id,mall_name,number,floor,status,area,areacost,added_value_ratio));
+            }
+            return pavilionsList;
+        }
 
 
     }
