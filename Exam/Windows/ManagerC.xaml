@@ -11,7 +11,7 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="malls" ItemsSource="{Binding mallList}">
+        <DataGrid x:Name="malls" ItemsSource="{Binding mallList,Mode=TwoWay}" SelectedItem="{Binding mall}">
             <DataGrid.Columns >
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название ТЦ" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Path=Status}" Header="Статус" Width="*"/>
@@ -22,5 +22,46 @@
                 <DataGridTextColumn Binding="{Binding Path=Floors}" Header="Коэффциент" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Grid.Column="1">
+            <StackPanel  >
+                <TextBlock  HorizontalAlignment="Center" TextWrapping="Wrap">Отфильтровать</TextBlock>
+                <ComboBox Background="#FFFF9C1A" SelectionChanged="StatusBox_SelectionChanged" x:Name="statusBox">
+                    <ComboBoxItem>План</ComboBoxItem>
+                    <ComboBoxItem>Строительство</ComboBoxItem>
+                    <ComboBoxItem>Реализация</ComboBoxItem>
+                    <ComboBoxItem>Без фильтров</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="0,5,0,0">
+                <TextBlock HorizontalAlignment="Center">Добавление Пользователя</TextBlock>
+                
+                <TextBlock Margin="0,10,0,0">Название ТЦ</TextBlock>
+                <TextBox x:Name="name" Text="{Binding Path = SelectedItem.Name,ElementName=malls}"></TextBox>
+
+                <TextBlock>Cтатус</TextBlock>
+                <TextBox x:Name="status" Text="{Binding Path = SelectedItem.Status,ElementName=malls}"></TextBox>
+
+                <TextBlock >Кол-во павильонов</TextBlock>
+                <TextBox x:Name="count" Text="{Binding Path = SelectedItem.Count,ElementName=malls}"></TextBox>
+
+                <TextBlock>Город</TextBlock>
+                <TextBox x:Name="city" Text="{Binding Path = SelectedItem.City,ElementName=malls}"></TextBox>
+
+                <TextBlock>Стоимость</TextBlock>
+                <TextBox x:Name="cost" Text="{Binding Path = SelectedItem.Cost,ElementName=malls}"></TextBox>
+
+                <TextBlock>Коэф. добавочной стоимости ТЦ</TextBlock>
+                <TextBox x:Name="ratio" Text="{Binding Path = SelectedItem.Value_ratio,ElementName=malls}"></TextBox>
+
+                <TextBlock>Этажность</TextBlock>
+                <TextBox x:Name="floors" Text="{Binding Path = SelectedItem.Floors,ElementName=malls}"></TextBox>
+
+                <Button x:Name="edit" Background="#FFFF9C1A" Click="edit_Click">Изменить</Button>
+            </StackPanel>
+            
+        </StackPanel>
+        
+        
     </Grid>
 </Window>

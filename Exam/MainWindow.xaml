@@ -10,13 +10,19 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel >
                 <TextBlock>Логин</TextBlock>
-                <TextBox x:Name="login" Width="200"></TextBox>
+                <TextBox x:Name="login" Width="200">Adam@gmai.com</TextBox>
             </StackPanel>
             <StackPanel >
                 <TextBlock >Пароль</TextBlock>
-                <PasswordBox PasswordChar="*" Width="200" x:Name="password"></PasswordBox>
+                <PasswordBox PasswordChar="*" Width="200" x:Name="password" Password="7SP9CV"></PasswordBox>
             </StackPanel>
-            <Button Click="Login">Войти</Button>
+            <StackPanel x:Name="captchaStack" Visibility="Collapsed" >
+                <TextBlock>Введите Капчу</TextBlock>
+                <TextBlock x:Name="captchaText"></TextBlock>
+                <TextBox x:Name="captchaInput"></TextBox>
+            </StackPanel>
+            <Button  Click="Login" Background="#FFFF9C1A">Войти</Button>
+            
         </StackPanel>
     </Grid>
 </Window>
